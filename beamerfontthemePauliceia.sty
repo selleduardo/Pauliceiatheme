@@ -1,0 +1,43 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerfontthemePauliceia}[2016/11/19 Pauliceia font theme]
+\RequirePackage{etoolbox}
+\RequirePackage{fontspec}
+
+\setsansfont% [ItalicFont={Open Sans Italic},
+% BoldFont={Open Sans Bold},%
+%  BoldItalicFont={Open Sans Bold Italic}]
+{Open Sans}
+
+% \setsansfont[ItalicFont={Open Sans Light Italic},%
+% BoldFont={Open Sans},%
+% BoldItalicFont={Open Sans Italic}]{Open Sans Light}
+
+
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{section title}{size=\Large, series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{block title alerted}{size=\normalsize, series=\bfseries}
+\setbeamerfont{block title exemple}{size=\normalsize, series=\bfseries}
+\setbeamerfont{frametitle}{size=\Large}                           
+\setbeamerfont{framesubtitle}{size=\normalsize}                           
+\setbeamerfont{caption}{size=\small}
+\setbeamerfont{caption name}{series=\bfseries}
+\setbeamerfont{description item}{series=\bfseries}
+\setbeamerfont{page number in head/foot}{size=\tiny}
+
+\setbeamerfont{bibliography entry author}{size=\normalsize,%
+                                          series=\normalfont}
+\setbeamerfont{bibliography entry title}{size=\normalsize,%
+                                         series=\bfseries}
+\setbeamerfont{bibliography entry location}{size=\normalsize,%
+                                            series=\normalfont}
+\setbeamerfont{bibliography entry note}{size=\small,%
+                                        series=\normalfont}
+
+\setbeamerfont{standout}{size=\Large,%
+                         series=\bfseries}
+
+\endinput

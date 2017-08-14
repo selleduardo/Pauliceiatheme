@@ -1,0 +1,194 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemePauliceia}[2016/11/19 Pauliceia inner theme]
+\RequirePackage{etoolbox}
+\RequirePackage{ragged2e}
+\RequirePackage{keyval}
+\RequirePackage{calc}
+\RequirePackage{pgfopts}
+\RequirePackage{tikz}
+
+
+\setbeamersize{text margin left=20pt,text margin right=20pt}
+
+\apptocmd{\frame}{}{\justifying}{} % Allow optional arguments after frame.
+
+
+\setbeamertemplate{title page}{
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+    \vfill%
+    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+    \usebeamertemplate*{title separator}
+    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+    \vfill
+    \vspace*{1mm}
+  \end{minipage}
+}
+
+
+\def\maketitle{%
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \frame[plain,noframenumbering]{\titlepage}
+  \fi
+}
+
+\def\titlepage{%
+  \usebeamertemplate{title page}
+}
+
+\setbeamertemplate{title graphic}{
+  \vbox to 0pt {
+    \vspace*{2em}
+    \inserttitlegraphic%
+  }%
+  \nointerlineskip%
+}
+
+\setbeamertemplate{title}{
+  \raggedright%
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
+}
+
+\setbeamertemplate{subtitle}{
+  \raggedright%
+  \insertsubtitle%
+  \par%
+  % \vspace*{0.5em}
+}
+
+\newlength{\sptitleseparator}
+\setlength{\sptitleseparator}{0.6pt}
+
+\setbeamertemplate{title separator}{
+  \begin{tikzpicture}
+    \fill[mLightBrown] (0,0) rectangle (\textwidth, \sptitleseparator);
+  \end{tikzpicture}%
+  \par%
+}
+
+\setbeamertemplate{author}{
+  \vspace*{1em}
+  \insertauthor%
+  \par%
+  \vspace*{0.25em}
+}
+
+\setbeamertemplate{date}{
+  \vspace*{3mm}
+  \insertdate%
+  \par%
+}
+
+\setbeamertemplate{institute}{
+  \insertinstitute%
+  \par%
+}
+
+
+\def\inserttotalframenumber{100}
+\newlength{\Pauliceia@blocksep}
+\newlength{\Pauliceia@blockadjust}
+\setlength{\Pauliceia@blocksep}{0.75ex}
+\setlength{\Pauliceia@blockadjust}{0.25ex}
+\providecommand{\Pauliceia@strut}{%
+  \vphantom{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()}%
+}
+\newcommand{\Pauliceia@block}[1]{
+  \par\vskip\medskipamount%
+  \setlength{\parskip}{0pt}
+  \ifbeamercolorempty[bg]{block title#1}{%
+    \begin{beamercolorbox}[rightskip=0pt plus 4em]{block title#1}}{%
+  \ifbeamercolorempty[bg]{block title}{%
+    \begin{beamercolorbox}[rightskip=0pt plus 4em]{block title#1}%
+  }%
+  {%
+    \begin{beamercolorbox}[
+      sep=\dimexpr\Pauliceia@blocksep-\Pauliceia@blockadjust\relax,
+      leftskip=\Pauliceia@blockadjust,
+      rightskip=\dimexpr\Pauliceia@blockadjust plus 4em\relax
+    ]{block title#1}%
+  }}%
+      \usebeamerfont*{block title#1}%
+      \Pauliceia@strut%
+      \insertblocktitle%
+      \Pauliceia@strut%
+  \end{beamercolorbox}%
+  \nointerlineskip%
+  \ifbeamercolorempty[bg]{block body#1}{%
+    \begin{beamercolorbox}[vmode]{block body#1}}{
+  \ifbeamercolorempty[bg]{block body}{%
+    \begin{beamercolorbox}[vmode]{block body#1}%
+  }{%
+    \begin{beamercolorbox}[sep=\Pauliceia@blocksep, vmode]{block body#1}%
+    \vspace{-\Pauliceia@parskip}
+  }}%
+      \usebeamerfont{block body#1}%
+      \setlength{\parskip}{\Pauliceia@parskip}%
+}
+
+\setbeamertemplate{block begin}{\Pauliceia@block{}}
+\setbeamertemplate{block alerted begin}{\Pauliceia@block{ alerted}}
+\setbeamertemplate{block example begin}{\Pauliceia@block{ example}}
+\setbeamertemplate{block end}{\end{beamercolorbox}\vspace*{0.2ex}}
+\setbeamertemplate{block alerted end}{\end{beamercolorbox}\vspace*{0.2ex}}
+\setbeamertemplate{block example end}{\end{beamercolorbox}\vspace*{0.2ex}}
+
+\setbeamertemplate{itemize items}{\textbullet}
+\setbeamertemplate{caption label separator}{: }
+\setbeamertemplate{caption}[numbered]
+
+\setbeamertemplate{footnote}{%
+  \parindent 0em\noindent%
+  \raggedright
+  \usebeamercolor{footnote}\hbox to 0.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+}
+
+\newlength{\Pauliceia@parskip}
+\setlength{\Pauliceia@parskip}{0.5em}
+\setlength{\parskip}{\Pauliceia@parskip}
+\linespread{1.15}
+\define@key{beamerframe}{c}[true]{% centered
+  \beamer@frametopskip=0pt plus 1fill\relax%
+  \beamer@framebottomskip=0pt plus 1fill\relax%
+  \beamer@frametopskipautobreak=0pt plus .4\paperheight\relax%
+  \beamer@framebottomskipautobreak=0pt plus .6\paperheight\relax%
+  \def\beamer@initfirstlineunskip{}%
+}
+
+\providebool{Pauliceia@standout}
+\define@key{beamerframe}{standout}[true]{%
+  \booltrue{Pauliceia@standout}
+  \begingroup
+    \setkeys{beamerframe}{c}
+    \setkeys{beamerframe}{noframenumbering}
+    \ifbeamercolorempty[bg]{palette primary}{
+      \setbeamercolor{background canvas}{
+        use=palette primary,
+        bg=-palette primary.fg
+      }
+    }{
+      \setbeamercolor{background canvas}{
+        use=palette primary,
+        bg=palette primary.bg
+      }
+    }
+  \centering
+  \usebeamercolor[fg]{palette primary}
+  \usebeamerfont{standout}
+}
+  \apptocmd{\beamer@reseteecodes}{%
+    \ifbool{Pauliceia@standout}{
+      \endgroup
+      \boolfalse{Pauliceia@standout}
+    }{}
+  }{}{}
+
+\endinput

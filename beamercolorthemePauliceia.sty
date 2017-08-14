@@ -1,0 +1,65 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemePauliceia}[2016/11/19 Pauliceia Color Theme]
+
+% \definecolor{background}{RGB}{45, 45, 45}
+\definecolor{title}{RGB}{107,174,214}
+\definecolor{subtitle}{RGB}{102,255,204}
+\definecolor{hilight}{RGB}{102,255,204}
+\definecolor{vhilight}{RGB}{255,111,107}
+\definecolor{gray}{RGB}{100,100,100}
+\definecolor{vermelho}{RGB}{255,30,30}
+\definecolor{azul}{RGB}{60,60, 255}
+\definecolor{lazul}{RGB}{208,223,216}
+\definecolor{amarelo}{RGB}{227, 177, 42}
+
+\definecolor{mDarkBrown}{HTML}{604c38}
+\definecolor{mDarkTeal}{HTML}{23373b}
+\definecolor{mLightBrown}{HTML}{EB811B}
+\definecolor{mLightGreen}{HTML}{14B03D}
+
+
+\setbeamercolor{title}{fg=mDarkTeal}
+\setbeamercolor{subtitle}{fg=mDarkTeal}
+\setbeamercolor{institute}{fg=gray}
+
+\setbeamercolor{frametitle}{fg=mDarkTeal}
+% \setbeamercolor{frametitle}{fg=title}
+% \setbeamercolor{framesubtitle}{fg=subtitle}
+\setbeamercolor{framesubtitle}{fg=mLightBrown}
+\setbeamercolor{section in head/foot}{fg=title}
+\setbeamercolor{section in toc}{fg=title}
+\setbeamercolor{subsection in toc}{fg=gray}
+\setbeamercolor{normal text}{fg=mDarkTeal,bg=black!3}
+\setbeamercolor{block title}{fg=mDarkTeal}
+\setbeamercolor{item}{fg = mDarkTeal} % color of bullets
+\setbeamercolor{subitem}{fg=gray}
+\setbeamercolor{itemize/enumerate subbody}{fg=gray}
+\setbeamercolor{footnote}{fg=azul}
+\setbeamercolor{footnote mark}{fg=azul}
+\setbeamercolor{bibliography entry author}{fg=azul}
+\setbeamercolor{bibliography entry note}{fg=azul}
+% \setbeamercolor{math text}{fg=amarelo!50}
+
+\setbeamercolor{alerted text}{fg = mLightBrown}
+\setbeamercolor{example text}{fg = lazul}
+
+\setbeamercolor{block title alerted}{%
+    use={block title, alerted text},
+    bg=block title.bg,
+    fg=alerted text.fg
+}
+
+\setbeamercolor{block title example}{%
+    use={block title, example text},
+    bg=block title.bg,
+    fg=example text.fg
+}
+
+\setbeamercolor{block body alerted}{use=block body, parent=block body}
+\setbeamercolor{block body example}{use=block body, parent=block body}
+\setbeamercolor{footnote}{fg = normal text.fg!90}
+\setbeamercolor{footnote mark}{fg=.}
+
+
+
+\endinput
